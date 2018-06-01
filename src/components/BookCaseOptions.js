@@ -2,25 +2,22 @@ import React, { Component } from 'react'
 import Book from './Book'
 
 // 2.COMPONENTE RESPONSAVEL PELAS ESTANTES DE LIVROS
-class BookCaseOptions extends Component {
-    render(){
-        return(
-            <div className="bookshelf">
-                <h2 className="bookshelf-title">Currently Reading</h2>
-                <div className="bookshelf-books">
+function BookCaseOptions(props) {
 
-                    <ol className="books-grid">
-                        {showingBooks.map((book) => (
-                            <li key={book.id}>
-                                <Book />
-                            </li>
-                        ))}
-                    </ol>
+    return(
+        <div className="bookshelf">
+            <h2 className="bookshelf-title">{props.name}</h2>
+            <div className="bookshelf-books">
 
-                </div>
-          </div>
-        )
-    }
+                <ol className="books-grid">
+                    {props.books.map((book) => (
+                        <Book key={book.id} book={book}/>
+                    ))}
+                </ol>
+
+            </div>
+        </div>
+    )
 }
 
 export default BookCaseOptions
