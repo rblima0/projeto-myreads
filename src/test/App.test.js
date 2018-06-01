@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
+import App from '../style/App'
 
 /** 
  This course is not designed to teach Test Driven Development. 
@@ -12,5 +12,3 @@ it('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<App />, div)
 })
-
-

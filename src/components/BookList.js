@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
-class ListBooks extends Component {
+// 1.COMPONENTE PRINCIPAL RESPONSAVEL POR INICIAR OS COMPONENTES EM CADEIA
+class BookList extends Component {
 
   render(){
 
@@ -35,4 +36,4 @@ class ListBooks extends Component {
   }
 }
 
-export default ListBooks
+export default BookList

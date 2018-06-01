@@ -1,8 +1,8 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
-import './App.css'
-import ListBooks from './components/ListBooks'
+/* import { Route } from 'react-router-dom' */
+import BookList from './components/BookList'
 import * as BooksAPI from './utils/BooksAPI'
+import './styles/css/App.css'
 
 class BooksApp extends React.Component {
   state = {
@@ -45,34 +45,15 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
 
-                    <ListBooks books={this.state.books} />
+                    <BookList books={this.state.books} />
 
                     {/* <BrowserRouter>
-                      <ListBooks books={this.state.books} />
+                      <BookList books={this.state.books} />
                     </BrowserRouter> */}
 
                   </div>
                 </div>
 
-
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-
-                    {/* <ListBooks books={this.state.books} /> */}
-
-                  </div>
-                </div>
-
-
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    
-                    {/* <ListBooks books={this.state.books} /> */}
-
-                  </div>
-                </div>
               </div>
             </div>
 
