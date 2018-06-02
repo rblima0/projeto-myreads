@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import BookCaseOptions from './BookCaseOptions'
 
 // 1.COMPONENTE PRINCIPAL RESPONSAVEL POR INICIAR OS COMPONENTES EM CADEIA
@@ -8,11 +9,11 @@ function BookList (props) {
 		{ id: 'currentlyReading', name: 'Lendo Atualmente' },
 		{ id: 'wantToRead', name: 'Quero Ler' },
 		{ id: 'read', name: 'Lido' }
-	];
+	]
 
 	let bookCaseSelect = (shelf) => {
 		return props.books.filter((book) => book.shelf === shelf)
-	};
+	}
 	
 	return(
 		<div>
@@ -23,13 +24,14 @@ function BookList (props) {
 						name={shelf.name} 
 						changeTrigger={props.changeTrigger}
 						books={bookCaseSelect(shelf.id)}
-						{...console.log(shelf)}
+						// {...console.log(shelf)}
 					/>
 				))}
 			</div>
 
 			<div className="open-search">
-				<a onClick={() => this.setState({ showSearchPage: true })}>Adicionar um Livro</a>
+				<Link to="/search">Adicionar um Livro</Link>
+				{/* <a onClick={() => this.setState({ showSearchPage: true })}>Adicionar um Livro</a> */}
 			</div>
 		</div>
 	)
