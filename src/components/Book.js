@@ -1,20 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
 import BookSelect from './BookSelect'
 
 // 3.COMPONENTE RESPONSAVEL PELO LIVRO E SUAS INFORMAÇÕES
 function Book(props) {
 
-    const { book } = props.book;
+    const book = props.book
     
     return(
-        <li>
+        <li key={book.id} >
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" 
                         style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}>
                     </div>
                     
-                    <BookSelect book={book} />
+                    <BookSelect 
+                        book={book}
+                        changeTrigger={props.changeTrigger} 
+                    />
 
                 </div>
                 <div className="book-title">{book.title}</div>

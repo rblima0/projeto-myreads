@@ -1,17 +1,31 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+//import { Route } from 'react-router-dom'
 import * as BooksAPI from './utils/BooksAPI'
-import BookSearch from './components/BookSearch'
+//import BookSearch from './components/BookSearch'
 import BookList from './components/BookList'
 import './styles/css/App.css'
 
 class BooksApp extends Component {
 	state = {
-		books: [],
-		showSearchPage: false
+		books: []
 	}
 
-	componentDidMount() {  
+	alterBook = (book) => {
+		const books = this.state.books;
+		const index = books.findIndex((index) => index.id === book.id)
+		book.shelf === 'none' ? books.splice(index, 1) : books[index] = book
+		this.setState({ books })
+	};
+
+	updateBookCase = (book, shelf) => {
+		BooksAPI.update(book, shelf)
+			.then(() => {
+				book.shelf = shelf
+				this.alterBook(book)
+			})
+	}
+
+	componentDidMount() { 
 		BooksAPI.getAll().then((books) => {
 			this.setState({ books })
 		})
@@ -25,10 +39,10 @@ class BooksApp extends Component {
 					<div className="list-books-title">
 						<h1>MyReads</h1>
 					</div>
-					<Route exact path="/" render={() => (
 						<BookList
-						books={this.state.books} />
-					)} />
+							books={this.state.books}
+							changeTrigger={this.updateBookCase}
+						/>
 				</div>
 			</div>
 		)

@@ -1,18 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 // 4.COMPONENTE RESPONSAVEL PELAS OPÇÕES DE MOVER OS LIVROS DE ESTANTE
 function BookSelect(props){
 
-    const { book } = props.book;
+    const book = props.book;
+    
+    /*  handleChange(event) {
+        this.setState({value: event.target.value})
+    } */
+    
+    //const shelf = event.target.value;
+    
+    let handleChange = (event) => {
+        alert("Alteração acontecendo !")
+        const shelf = event.target.value
+        props.changeTrigger(book, shelf)
+    };
     
     return (
         <div className="book-shelf-changer">
-            <select>
-                <option value="none" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
-                <option value="none">None</option>
+            <select value={book.shelf} onChange={handleChange}>
+                <option value="none" disabled>Mover para...</option>
+                <option value="currentlyReading">Lendo Atualmente</option>
+                <option value="wantToRead">Quero Ler</option>
+                <option value="read">Lido</option>
+                <option value="none">Nenhum</option>
             </select>
         </div>
     )

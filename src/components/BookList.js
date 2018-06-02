@@ -1,24 +1,30 @@
-import React, { Component } from 'react'
+import React from 'react'
 import BookCaseOptions from './BookCaseOptions'
 
 // 1.COMPONENTE PRINCIPAL RESPONSAVEL POR INICIAR OS COMPONENTES EM CADEIA
 function BookList (props) {
 
 	const BookCaseOption = [
-		{ id: 'currentlyReading', name: 'Currently Reading' },
-		{ id: 'wantToRead', name: 'Want to Read' },
-		{ id: 'read', name: 'Read' }
+		{ id: 'currentlyReading', name: 'Lendo Atualmente' },
+		{ id: 'wantToRead', name: 'Quero Ler' },
+		{ id: 'read', name: 'Lido' }
 	];
 
-	let bookCaseSelect = (bookCase) => {
-		return props.books.filter((book) => book.bookCase === bookCase)
+	let bookCaseSelect = (shelf) => {
+		return props.books.filter((book) => book.shelf === shelf)
 	};
 	
 	return(
 		<div>
 			<div className="list-books-content">
-				{BookCaseOption.map((bookCase) => (
-					<BookCaseOptions key={bookCase.id} name={bookCase.name} books={bookCaseSelect(bookCase.id)} />
+				{BookCaseOption.map((shelf) => (
+					<BookCaseOptions 
+						key={shelf.id} 
+						name={shelf.name} 
+						changeTrigger={props.changeTrigger}
+						books={bookCaseSelect(shelf.id)}
+						{...console.log(shelf)}
+					/>
 				))}
 			</div>
 
