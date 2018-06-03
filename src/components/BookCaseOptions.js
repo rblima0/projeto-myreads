@@ -14,6 +14,7 @@ function BookCaseOptions(props) {
                             key={book.id} 
                             book={book}
                             changeTrigger={props.changeTrigger}
+                            searchPage={false}
                             // {...console.log(book)}
                             /* {...console.log(book.ratingsCount)}
                             {...console.log(book.readingModes)}

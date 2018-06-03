@@ -31,7 +31,6 @@ function BookList (props) {
 
 			<div className="open-search">
 				<Link to="/search">Adicionar um Livro</Link>
-				{/* <a onClick={() => this.setState({ showSearchPage: true })}>Adicionar um Livro</a> */}
 			</div>
 		</div>
 	)

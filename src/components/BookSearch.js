@@ -12,7 +12,8 @@ class BookSearch extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query: query.trim() })
+        this.setState({ query })
+        query = query.trim()
         
         BooksAPI.search(query)
             .then((searchBooks) => {
@@ -28,18 +29,11 @@ class BookSearch extends Component {
                     this.setState({ searchBooks })
                 }
             })
-    }
-
-    clearQuery = () => {
-        this.setState({ query: ''})
-    }
-
-
+    }        
 
     render(){
 
         const { query, searchBooks } = this.state
-        const { changeTrigger } = this.props
 
         return(
             <div className="search-books">
@@ -48,24 +42,23 @@ class BookSearch extends Component {
                     <Link className="close-search" to="/">Fechar</Link>
 
                     <div className="search-books-input-wrapper">
-                        <input type="text" name="query" placeholder="Procurar por título ou autor..." value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
+                        <input type="text" name="query" placeholder="Faça sua pesquisa aqui..." value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
                     </div>
                 </div>
 
                 <div className="search-books-results">
-                    {/*{searchBooks.length !== 0 (
-                        <div>
-                            <span>Mostrando {searchBooks.length} livros </span>
-                            <button onClick={this.clearQuery}>Mostrar todos</button>
-                        </div>
-                    )} */}
+                    {query && (searchBooks.length !== 0
+                        ? (<span>Mostrando {searchBooks.length} livros de <em>"{query}"</em></span>)
+                        : (<span>Nenhum resultado encontrado para <em>"{query}"</em></span>)
+                    )}
                     <ol className="books-grid">
                         {searchBooks.map((book) => (
                             <Book
                                 key={book.id} 
                                 book={book}
-                                changeTrigger={changeTrigger}
-                                /* {...console.log(book)} */
+                                changeTrigger={this.props.changeTrigger}
+                                searchPage={true}
+                                /* {...console.log(book.shelf)} */
                             />
                         ))}
                     </ol>

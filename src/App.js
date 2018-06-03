@@ -6,6 +6,7 @@ import BookList from './components/BookList'
 import './styles/css/App.css'
 
 class BooksApp extends Component {
+	
 	state = {
 		books: []
 	}
@@ -57,7 +58,7 @@ class BooksApp extends Component {
 						/>
 					)} />
 
-					<Route path="/search/:query?" render={() => (
+					<Route path="/search/" render={() => (
 						<BookSearch 
 							selectBookCase={this.selectBookCase}
 							changeTrigger={this.updateBookCase}
