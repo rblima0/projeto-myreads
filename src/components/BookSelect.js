@@ -5,12 +5,6 @@ function BookSelect(props){
 
     const book = props.book
     
-    /*  handleChange(event) {
-        this.setState({value: event.target.value})
-    } */
-    
-    //const shelf = event.target.value;
-    
     let handleChange = (event) => {
         alert("Alteração acontecendo !")
         const shelf = event.target.value
@@ -19,7 +13,7 @@ function BookSelect(props){
 
     return (
         <div className="book-shelf-changer">
-            <select value={props.searchPage === true ? book.shelf.shelf : book.shelf } onChange={handleChange}>
+            <select value={props.searchPage === true ? book.shelf.shelf || "none" : book.shelf || "none" } onChange={handleChange}>
                 {console.log(props.searchPage)}
                 <option disabled>Mover para...</option>
                 <option value="currentlyReading">Lendo Atualmente</option>
