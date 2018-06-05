@@ -14,7 +14,7 @@ function BookSelect(props){
     return (
         <div className="book-shelf-changer">
             <select value={props.searchPage === true ? book.shelf.shelf || "none" : book.shelf || "none" } onChange={handleChange}>
-                {console.log(props.searchPage)}
+                {/* {console.log(props.searchPage)} */}
                 <option disabled>Mover para...</option>
                 <option value="currentlyReading">Lendo Atualmente</option>
                 <option value="wantToRead">Quero Ler</option>
