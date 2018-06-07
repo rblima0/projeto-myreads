@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import Book from './Book'
-import * as BooksAPI from '../utils/BooksAPI'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Book from './Book';
+import * as BooksAPI from '../utils/BooksAPI';
 
 // 0.COMPONENTE RESPONSAVEL PELA BUSCA DE LIVROS
 class BookSearch extends Component {
@@ -12,28 +12,27 @@ class BookSearch extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query })
-        query = query.trim()
+        this.setState({ query });
+        query = query.trim();
         
         BooksAPI.search(query)
             .then((searchBooks) => {
-                if (!searchBooks || searchBooks.error){
-                    this.setState({searchBooks : []})
+                if (!searchBooks || searchBooks.error) {
+                    this.setState({searchBooks : []});
                     return searchBooks
                 } else {
-                    // console.log(searchBooks)
                     searchBooks.map((book) => {
-                        book.shelf = this.props.selectBookCase(book.id)
+                        book.shelf = this.props.selectBookCase(book.id);
                         return book
                     })
-                    this.setState({ searchBooks })
+                    this.setState({ searchBooks });
                 }
             })
     }        
 
     render(){
 
-        const { query, searchBooks } = this.state
+        const { query, searchBooks } = this.state;
 
         return(
             <div className="search-books">
@@ -58,7 +57,6 @@ class BookSearch extends Component {
                                 book={book}
                                 changeTrigger={this.props.changeTrigger}
                                 searchPage={true}
-                                /* {...console.log(book.shelf)} */
                             />
                         ))}
                     </ol>

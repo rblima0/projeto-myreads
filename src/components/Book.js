@@ -1,10 +1,11 @@
-import React from 'react'
-import BookSelect from './BookSelect'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import BookSelect from './BookSelect';
 
 // 3.COMPONENTE RESPONSAVEL PELO LIVRO E SUAS INFORMAÇÕES
 function Book(props) {
 
-    const book = props.book
+    const book = props.book;
 
     let iconBook = () => {
         if(book.shelf === "currentlyReading" || book.shelf.shelf === "currentlyReading") {
@@ -20,10 +21,13 @@ function Book(props) {
         <li key={book.id} >
             <div className="book">
                 <div className="book-top">
+
+                <Link to={`/description/${book.id}`}>
                     <div className="book-cover" 
                         style={{ width: 128, height: 193, backgroundImage: book.imageLinks ? (`url(${book.imageLinks.thumbnail})`) : (``) }}>
                     </div>
-
+                </Link>
+                
                     {iconBook()}
 
                     <BookSelect 
@@ -31,7 +35,6 @@ function Book(props) {
                         changeTrigger={props.changeTrigger}
                         searchPage={props.searchPage}
                     />
-
                 </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.authors}</div>

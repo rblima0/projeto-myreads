@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import BookCaseOptions from './BookCaseOptions'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import BookCaseOptions from './BookCaseOptions';
 
 // 1.COMPONENTE PRINCIPAL RESPONSAVEL POR INICIAR OS COMPONENTES EM CADEIA
 function BookList (props) {
@@ -12,7 +12,7 @@ function BookList (props) {
 	]
 
 	let bookCaseSelect = (shelf) => {
-		return props.books.filter((book) => book.shelf === shelf)
+		return props.books.filter((book) => book.shelf === shelf);
 	}
 	
 	return(

@@ -60,7 +60,7 @@ h2.bookshelf-title {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: #32b67a;
+  background: #4E4E50;
   background-image: url('../icons/add.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -161,7 +161,7 @@ h2.bookshelf-title {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #32b67a;
+  background: #4E4E50;
   background-image: url('../icons/arrow-drop-down.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -229,4 +229,129 @@ h2.bookshelf-title {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+/* DETAILS PAGE */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 1em auto;
+  padding: 10px 20px;
+  background: #fff;
+}
+
+.book-image {
+  float: left;
+  margin-right: 20px;
+}
+
+.book-info {
+  line-height: 1;
+}
+
+.book-info p {
+  margin: 0.5em 0;
+}
+
+.book-info h2 {
+  color: #4e4e50;
+  margin: 0 0 5px 0;
+  font-size: 20px;
+}
+
+.book-info-subtitle {
+  color: #86848c;
+  font-style: italic;
+  font-size: 16px;
+}
+
+.book-info-authors {
+  color: #b4b8c4;
+  font-size: 14px;
+}
+
+.book-info-pages {
+  font-size: 13px;
+  color: #86848c;
+}
+
+.book-info-reading {
+  font-size: 13px;
+  color: #86848c;
+}
+
+.book-info-language {
+  font-size: 13px;
+  color: #86848c;
+}
+
+.book-ratings-star, .book-ratings-nonestar {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+}
+
+.book-ratings-star {
+  background-image: url('../icons/star.png');
+}
+
+.book-ratings-nonestar {
+  background-image: url('../icons/none-star.png');
+}
+
+.book-categorie p {
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #ebe4de;
+  padding: 0.2em 0.8em;
+  color: #4e4e50;
+  font-weight: bold;
+  /* margin: 0 0.1em; */
+}
+
+.book-description {
+  margin-top: 40px;
+  line-height: 1.5;
+  clear: left;
+}
+
+.book-description p {
+  font-size: 14px;
+  color: #86848c;
+}
+
+.book-description-button {
+  display: block;
+  margin: 1.5em auto;
+  width: 250px;
+  background-color: #d2bcac;
+  text-align: center;
+}
+
+.book-description-button a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #4e4e50;
+}
+
+.book-description-button:hover {
+  background-color: #b4b8c4;
+}
+
+/* RELACIONADOS */
+.book-related h2 {
+  margin: 20px 0 5px 0;
+  color: #4e4e50;
+}
+
+.book-related-categories img {
+  margin: 0 auto;
+  display: block;
+}
+
+.book-related-categories {
+  display: inline-block;
+  width: 33.3333%;
+  margin-left: -5px;
+  margin-right: -5px;
 }

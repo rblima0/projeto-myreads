@@ -1,5 +1,5 @@
-import React from 'react'
-import Book from './Book'
+import React from 'react';
+import Book from './Book';
 
 // 2.COMPONENTE RESPONSAVEL PELAS ESTANTES DE LIVROS
 function BookCaseOptions(props) {
@@ -15,11 +15,7 @@ function BookCaseOptions(props) {
                             book={book}
                             changeTrigger={props.changeTrigger}
                             searchPage={false}
-                            // {...console.log(book)}
-                            /* {...console.log(book.ratingsCount)}
-                            {...console.log(book.readingModes)}
-                            {...console.log(props.changeTrigger)}
-                            {...console.log(book.shelf)} */
+                            /* {...console.log(book)} */
                         />
                     ))}
                 </ol>
