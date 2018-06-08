@@ -243,6 +243,7 @@ h2.bookshelf-title {
 .book-image {
   float: left;
   margin-right: 20px;
+  background-image: url('../icons/no-image.jpg');
 }
 
 .book-info {
@@ -342,16 +343,4 @@ h2.bookshelf-title {
 .book-related h2 {
   margin: 20px 0 5px 0;
   color: #4e4e50;
-}
-
-.book-related-categories img {
-  margin: 0 auto;
-  display: block;
-}
-
-.book-related-categories {
-  display: inline-block;
-  width: 33.3333%;
-  margin-left: -5px;
-  margin-right: -5px;
 }

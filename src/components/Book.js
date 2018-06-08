@@ -7,6 +7,7 @@ function Book(props) {
 
     const book = props.book;
 
+    // Responsavel por diferenciar a pagina de pesquisa e principal e trazer icone do estado do livro
     let iconBook = () => {
         if(book.shelf === "currentlyReading" || book.shelf.shelf === "currentlyReading") {
             return <div className="book-currently-reading"></div>
@@ -28,13 +29,14 @@ function Book(props) {
                     </div>
                 </Link>
                 
-                    {iconBook()}
+                {iconBook()}
 
-                    <BookSelect 
-                        book={book}
-                        changeTrigger={props.changeTrigger}
-                        searchPage={props.searchPage}
-                    />
+                <BookSelect 
+                    book={book}
+                    changeTrigger={props.changeTrigger}
+                    searchPage={props.searchPage}
+                />
+                
                 </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.authors}</div>

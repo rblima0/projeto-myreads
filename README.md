@@ -1,93 +1,28 @@
-# Projeto MyReads
+# Visão Geral do Projeto
 
-Este é o modelo inicial para o projeto de avaliação final do curso Fundamentos de Reação da Udacity. O objetivo desse modelo é economizar tempo fornecendo um exemplo estático da marcação CSS e HTML que pode ser usada, mas sem o código React necessário para concluir o projeto. Se você optar por começar com este modelo, seu trabalho será adicionar interatividade ao aplicativo refatorando o código estático neste modelo.
+Projeto MyReads, aplicação de estante de livros que permite selecionar e classificar os livros que você já leu, está lendo ou quer ler, projeto desenvolvido com o uso do React e um servidor de API e biblioteca cliente.
 
-Claro, você é livre para iniciar este projeto do zero, se desejar! Só não se esqueça de usar [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.
+## Como funciona ?
 
-## TL;DR
+Nesta aplicação, a página principal exibe uma lista de "estantes" (ou seja, categorias), cada uma das quais contém uma série de livros.
 
-Para começar a desenvolver imediatamente:
+As três estantes são:
+Currently Reading (lendo atualmente)
+Want to Read (quer ler)
+Read (já leu)
 
-* install all project dependencies with `npm install`
-* start the development server with `npm start`
+Cada livro possui imagem, titulo e autor, é possível alterar o livro de estante com o botão localizado em cima das imagens ou clicar no livro e ver todas as suas informações.
 
-## What You're Getting
-```bash
-├── CONTRIBUTING.md
-├── README.md - This file.
-├── SEARCH_TERMS.md # The whitelisted short collection of available search terms for you to use with your app.
-├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   └── index.html # DO NOT MODIFY
-└── src
-    ├── App.css # Styles for your app. Feel free to customize this as you desire.
-    ├── App.js # This is the root of your app. Contains static HTML right now.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
-    ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
-    ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
-    ├── index.css # Global styles. You probably won't need to change anything here.
-    └── index.js # You should not need to modify this file. It is used for DOM rendering only.
-```
+## Pagina de Pesquisa
 
-Lembre-se de que a boa prática de design do React é criar novos arquivos JS para cada componente e usar instruções de importação / solicitação para incluí-los onde forem necessários.
+A pagina de pesquisa busca na API pelo termo inserido no input e retorna uma grid com os livros disponíveis onde é possível adicionar o livro a uma estante ou clicar no livro e ver todas as suas informações.
 
-## Backend Server
+## Pagina de Descriçao
 
-Para simplificar seu processo de desenvolvimento, fornecemos um servidor de backend para você desenvolver. O arquivo fornecido [`BooksAPI.js`](src/BooksAPI.js) contém os métodos necessários para executar as operações necessárias no backend:
+Traz todas as informações disponíveis sobre o livro assim como link para uma previa do livro, temos uma seção que traz alguns livros aleatórios no final da pagina de descrição.
 
-* [`getAll`](#getall)
-* [`update`](#update)
-* [`search`](#search)
+## Creditos
 
-### `getAll`
-
-Method Signature:
-
-```js
-getAll()
-```
-
-* Retorna um Promise que resolve para um objeto JSON contendo uma coleção de objetos de livro.
-* Esta coleção representa os livros atualmente nas estantes do seu aplicativo.
-
-### `update`
-
-Method Signature:
-
-```js
-update(book, shelf)
-```
-
-* book: `<Object>` contendo no mínimo um `id` atributo
-* shelf: `<String>` contém um dos ["wantToRead", "currentlyReading", "read"]  
-* Retorna um Promise que resolve um objeto JSON contendo os dados de resposta da solicitação POST
-
-### `search`
-
-Method Signature:
-
-```js
-search(query)
-```
-
-* query: `<String>`
-* Retorna um Promise que resolve para um objeto JSON que contém uma coleção de no máximo 20 objetos de livro.
-* Esses livros não sabem em que prateleira estão. Eles são apenas resultados crus. Você precisará garantir que os livros tenham o estado correto na página de pesquisa.
-
-## Importante
-
-A API de back-end usa um conjunto fixo de resultados de pesquisa em cache e é limitada a um conjunto específico de termos de pesquisa, que podem ser encontrados em [SEARCH_TERMS.md](SEARCH_TERMS.md). Essa lista de termos são os únicos termos que funcionarão com o back-end, por isso não se surpreenda se suas pesquisas por Basket Weaving ou Bubble Wrap não retornarem nenhum resultado.
-
-## Create React App
-
-Este projeto foi bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). Você pode encontrar mais informações sobre como executar tarefas comuns [aqui](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
-
-## Contributing
-
-Este repositório é o código inicial para estudantes _all_ Udacity. Portanto, provavelmente não aceitaremos solicitações de recebimento.
-
-Para detalhes, confira [CONTRIBUTING.md](CONTRIBUTING.md).
+* Template Inicial [Clique Aqui](https://github.com/udacity/reactnd-project-myreads-starter)
+* Create React App [Clique Aqui](https://github.com/facebook/create-react-app)
+* Documentação do React [Clique Aqui](https://reactjs.org/docs/hello-world.html)

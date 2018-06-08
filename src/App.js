@@ -6,12 +6,14 @@ import BookList from './components/BookList';
 import BookDescription from './components/BookDescription';
 import './styles/css/App.css';
 
+// Pagina principal responsavel por chamar os componentes e controlar as rotas
 class BooksApp extends Component {
 	
 	state = {
 		books: []
 	}
 
+	// Responsavel por atualizar a instancia do livro
 	alterBook = (book) => {
 		const books = this.state.books;
 		const index = books.findIndex((index) => index.id === book.id);
@@ -24,6 +26,7 @@ class BooksApp extends Component {
 		this.setState({ books });
 	}
 
+	// Responsavel por alterar o livro de prateleira com a requisição na API
 	updateBookCase = (book, shelf) => {
 		BooksAPI.update(book, shelf)
 			.then(() => {
@@ -32,11 +35,13 @@ class BooksApp extends Component {
 			})
 	}
 
+	// Responsavel por selecionar a prateleira atual do livro
 	selectBookCase = (id) => {
 		let selectBook = this.state.books.find((book) => book.id === id);
 		return selectBook ? selectBook : 'none';
 	}
 
+	// Responsavel por buscar os dados na API
 	componentDidMount() { 
 		BooksAPI.getAll()
 			.then((books) => {
@@ -70,6 +75,7 @@ class BooksApp extends Component {
 						<BookDescription
 							id={props.match.params.id}
 							changeTrigger={this.updateBookCase}
+							selectBookCase={this.selectBookCase}
 						/>
 					)} />
 					

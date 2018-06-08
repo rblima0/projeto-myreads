@@ -5,6 +5,7 @@ function BookSelect(props){
 
     const book = props.book;
     
+    // Responsavel por mudar o livro de prateleira
     let handleChange = (event) => {
         const shelf = event.target.value;
         props.changeTrigger(book, shelf);
@@ -13,11 +14,11 @@ function BookSelect(props){
     return (
         <div className="book-shelf-changer">
             <select value={props.searchPage === true ? book.shelf.shelf || "none" : book.shelf || "none" } onChange={handleChange}>
-                <option disabled>Mover para...</option>
-                <option value="currentlyReading">Lendo Atualmente</option>
-                <option value="wantToRead">Quero Ler</option>
-                <option value="read">Lido</option>
-                <option value="none">Nenhum</option>
+                <option disabled>Move to...</option>
+                <option value="currentlyReading">Currently Reading</option>
+                <option value="wantToRead">Want To Read</option>
+                <option value="read">Read</option>
+                <option value="none">None</option>
             </select>
         </div>
     )

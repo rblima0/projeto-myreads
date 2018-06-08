@@ -6,11 +6,12 @@ import BookCaseOptions from './BookCaseOptions';
 function BookList (props) {
 
 	const BookCaseOption = [
-		{ id: 'currentlyReading', name: 'Lendo Atualmente' },
-		{ id: 'wantToRead', name: 'Quero Ler' },
-		{ id: 'read', name: 'Lido' }
+		{ id: 'currentlyReading', name: 'Currently Reading' },
+		{ id: 'wantToRead', name: 'Want to Read' },
+		{ id: 'read', name: 'Read' }
 	]
 
+	// Responsavel por selecionar os livros da prateleira
 	let bookCaseSelect = (shelf) => {
 		return props.books.filter((book) => book.shelf === shelf);
 	}
@@ -24,13 +25,12 @@ function BookList (props) {
 						name={shelf.name} 
 						changeTrigger={props.changeTrigger}
 						books={bookCaseSelect(shelf.id)}
-						// {...console.log(shelf)}
 					/>
 				))}
 			</div>
 
 			<div className="open-search">
-				<Link to="/search">Adicionar um Livro</Link>
+				<Link to="/search">Add Book</Link>
 			</div>
 		</div>
 	)

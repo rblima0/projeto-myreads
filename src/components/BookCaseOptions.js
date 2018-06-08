@@ -15,7 +15,6 @@ function BookCaseOptions(props) {
                             book={book}
                             changeTrigger={props.changeTrigger}
                             searchPage={false}
-                            /* {...console.log(book)} */
                         />
                     ))}
                 </ol>

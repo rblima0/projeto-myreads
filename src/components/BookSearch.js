@@ -11,6 +11,7 @@ class BookSearch extends Component {
         searchBooks: []
     }
 
+    // Responsavel pela pesquisa de livros na API, conforme alteração no input e feito a pesquisa
     updateQuery = (query) => {
         this.setState({ query });
         query = query.trim();
@@ -28,7 +29,7 @@ class BookSearch extends Component {
                     this.setState({ searchBooks });
                 }
             })
-    }        
+    }
 
     render(){
 

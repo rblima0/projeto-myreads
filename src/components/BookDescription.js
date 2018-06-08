@@ -1,14 +1,18 @@
 import React, { Component } from "react"
 import { Link } from 'react-router-dom'
+import { terms } from '../utils/Terms';
+import BookPopular from './BookPopular';
 import * as BooksAPI from '../utils/BooksAPI'
 
 class BookDescription extends Component {
 
     state = {
         book: null,
-        unknown: false
+        unknown: false,
+        searchBooks: []
     }
-
+    
+    // Responsavel por buscar informações do livro atual na API
     componentDidMount() {
         BooksAPI.get(this.props.id)
             .then((book) => {
@@ -17,20 +21,37 @@ class BookDescription extends Component {
             .catch((error) => {
                 this.setState({ unknown: true });
             })
+
+    // Responsavel por buscar livros aleatorios para pagina de descricao
+        const query = terms[Math.floor(terms.length * Math.random())]
+        let currentBook = []
+
+        BooksAPI.search(query)
+            .then((searchBooks) => {
+                searchBooks.map((book) => {
+                    if (currentBook.length < 4) {
+                        currentBook.push(book)
+                      }
+                      return currentBook
+                })
+                this.setState({ searchBooks: currentBook })
+            })
     }
 
+    // Função para presumir um tempo para finalizar o livro
     bookPageTime = () => {
         if(this.state.book.pageCount < 200) {
-            return <p className="book-info-reading">Tempo de Leitura: 3 a 5hs (aproximadamente)</p>
+            return <p className="book-info-reading">Reading Time: 3 to 5 hours (approx.)</p>
         } else if(this.state.book.pageCount >= 200 && this.state.book.pageCount <= 300){
-            return <p className="book-info-reading">Tempo de Leitura: 2 dias (aproximadamente)</p>
+            return <p className="book-info-reading">Reading Time: 2 days (approx.)</p>
         } else if(this.state.book.pageCount === undefined) {
-            return <p className="book-info-reading">Tempo de Leitura: Desconhecido</p>
+            return <p className="book-info-reading">Reading Time: Unknown</p>
         } else {
-            return <p className="book-info-reading">Tempo de Leitura: 3 dias ou mais (aproximadamente)</p>
+            return <p className="book-info-reading">Reading Time: 3 days or more (approx.)</p>
         }
     }
 
+    // Função para preencher as estrelas da classificação de livros
     bookRating = () => {
         const rating = this.state.book.averageRating || 0;
         let stars = [];
@@ -43,27 +64,27 @@ class BookDescription extends Component {
 
     render() {
 
-        const { book, unknown} = this.state;
-
+        const { book, unknown, searchBooks} = this.state;
+        
         if (!book) {
             if (!unknown) {
                 return null
             }
             return (
-                <center><p>Tivemos algum problema, o livro não foi encontrado</p></center>
+                <center><p>We did not find the page, we had some problem</p></center>
             )
         }
-        
+
         return(
             <div className="container">
-                <Link className="close-search" to="/">Fechar</Link>
+                <Link className="close-search" to="/">Close</Link>
                 <div className="book-image" 
                     style={{ width: 128, height: 193, backgroundImage: book.imageLinks ? (`url(${book.imageLinks.thumbnail})`) : (``) }}>
                 </div>
                 <div className="book-info">
                     <h2>{book.title}</h2>
-                    <p className="book-info-subtitle">{book.subtitle || "Subtitulo não informado"}</p>
-                    <p className="book-info-authors">{book.authors || "Autor não informado"}</p>
+                    <p className="book-info-subtitle">{book.subtitle || "Subtitle was not informed"}</p>
+                    <p className="book-info-authors">{book.authors || "Author was not informed"}</p>
         
                     <div className="book-ratings">
                         {this.bookRating().map((stars, index) => (
@@ -71,31 +92,38 @@ class BookDescription extends Component {
                         ))}
                     </div>
         
-                    <p className="book-info-pages">Numero de páginas: {book.pageCount || "Não Informado"}</p>
+                    <p className="book-info-pages">Number of pages: {book.pageCount || "Not informed"}</p>
                     {this.bookPageTime()}
-                    <p className="book-info-language">Linguagem: {book.language}</p>
+                    <p className="book-info-language">Language: {book.language}</p>
         
                     <div className="book-categorie">
-                        <p>{book.categories || "Desconhecida"}</p>
+                        <p>{book.categories || "Unknown"}</p>
                     </div>
         
                 </div>
         
                 <div className="book-description">
-                    <p>{book.description || "Nenhuma descrição foi encontrada..."}</p>
+                    <p>{book.description || "No description found..."}</p>
                     
                     <div className="book-description-button">
-                        <a href={book.previewLink} rel="external">VEJA UMA PRÉVIA</a>
+                        <a href={book.previewLink} rel="external">SEE A PRIOR</a>
                     </div>
                 </div>
                 
                 <div className="book-related">
-                    <h2>Livros Relacionados</h2>
+                    <h2>Popular Books</h2>
                     <hr/>
 
-                    {/* <div className="book-related-categories">
-                        <img src="content.jpg" alt=""></img>
-                    </div> */}
+                    <ol className="books-grid">
+                        {searchBooks.map((book) => (
+                            <BookPopular 
+                                key={book.id} 
+                                book={book}
+                                changeTrigger={this.props.changeTrigger}
+                                searchPage={false}
+                            />
+                        ))}
+                    </ol>
                 </div>
     
             </div>
