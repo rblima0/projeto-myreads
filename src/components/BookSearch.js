@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Book from './Book';
+import { DebounceInput } from 'react-debounce-input';
 import * as BooksAPI from '../utils/BooksAPI';
 
 // 0.COMPONENTE RESPONSAVEL PELA BUSCA DE LIVROS
@@ -42,7 +43,15 @@ class BookSearch extends Component {
                     <Link className="close-search" to="/">Fechar</Link>
 
                     <div className="search-books-input-wrapper">
-                        <input type="text" name="query" placeholder="Faça sua pesquisa aqui..." value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
+                    <DebounceInput
+                        type="text"
+                        name="query"
+                        placeholder="Faça sua pesquisa aqui..."
+                        value={query}
+                        minLength={3}
+                        debounceTimeout={300}
+                        onChange={(event) => this.updateQuery(event.target.value)} 
+                    />
                     </div>
                 </div>
 

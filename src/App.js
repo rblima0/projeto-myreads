@@ -13,10 +13,19 @@ class BooksApp extends Component {
 		books: []
 	}
 
+	// Responsavel por buscar os dados na API
+	componentDidMount() { 
+		BooksAPI.getAll()
+			.then((books) => {
+				this.setState({ books });
+			})
+	}
+
 	// Responsavel por atualizar a instancia do livro
 	alterBook = (book) => {
-		const books = this.state.books;
+		const books = this.state.books
 		const index = books.findIndex((index) => index.id === book.id);
+		
 
 		if (index !== -1) {
 			book.shelf === 'none' ? books.splice(index, 1) : books[index] = book;
@@ -39,14 +48,6 @@ class BooksApp extends Component {
 	selectBookCase = (id) => {
 		let selectBook = this.state.books.find((book) => book.id === id);
 		return selectBook ? selectBook : 'none';
-	}
-
-	// Responsavel por buscar os dados na API
-	componentDidMount() { 
-		BooksAPI.getAll()
-			.then((books) => {
-				this.setState({ books });
-			})
 	}
 
 	render() {

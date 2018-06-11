@@ -21,8 +21,18 @@ A pagina de pesquisa busca na API pelo termo inserido no input e retorna uma gri
 
 Traz todas as informações disponíveis sobre o livro assim como link para uma previa do livro, temos uma seção que traz alguns livros aleatórios no final da pagina de descrição.
 
+## Como rodar esse projeto ?
+
+Para rodar o projeto faça o download em sua maquina e use o NPM ou YARN.
+
+* Navegue pelo seu Terminal até a pasta do projeto
+* Instale todas as dependências do projeto com o comando `npm install`
+* Para iniciar o servidor de desenvolvimento use o comando `npm start`
+
 ## Creditos
 
 * Template Inicial [Clique Aqui](https://github.com/udacity/reactnd-project-myreads-starter)
 * Create React App [Clique Aqui](https://github.com/facebook/create-react-app)
 * Documentação do React [Clique Aqui](https://reactjs.org/docs/hello-world.html)
+
+Fique a vontade para baixar e alterar o projeto como desejar
