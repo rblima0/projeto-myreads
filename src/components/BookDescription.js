@@ -14,11 +14,12 @@ class BookDescription extends Component {
     
     // Responsavel por buscar informações do livro atual na API
     componentDidMount() {
+        this.props.loading(true);
         BooksAPI.get(this.props.id)
             .then((book) => {
                 this.setState({ book });
-            })
-            .catch((error) => {
+                this.props.loading(false);
+            }).catch((error) => {
                 this.setState({ unknown: true });
             })
 

@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import BookSelect from './BookSelect';
 
 // 3.COMPONENTE RESPONSAVEL PELO LIVRO E SUAS INFORMAÇÕES
-function Book(props) {
-
-    const book = props.book;
+function Book({ book, changeTrigger, searchPage }) {
 
     // Responsavel por diferenciar a pagina de pesquisa e principal e trazer icone do estado do livro
     let iconBook = () => {
@@ -33,8 +31,8 @@ function Book(props) {
 
                 <BookSelect 
                     book={book}
-                    changeTrigger={props.changeTrigger}
-                    searchPage={props.searchPage}
+                    changeTrigger={changeTrigger}
+                    searchPage={searchPage}
                 />
                 
                 </div>

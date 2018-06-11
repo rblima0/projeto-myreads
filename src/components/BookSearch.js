@@ -12,24 +12,32 @@ class BookSearch extends Component {
         searchBooks: []
     }
 
-    // Responsavel pela pesquisa de livros na API, conforme alteração no input e feito a pesquisa
+    // Responsavel pela busca de livros na API
     updateQuery = (query) => {
+        
+        this.props.loading(true);
         this.setState({ query });
         query = query.trim();
-        
-        BooksAPI.search(query)
-            .then((searchBooks) => {
-                if (!searchBooks || searchBooks.error) {
-                    this.setState({searchBooks : []});
-                    return searchBooks
-                } else {
+
+        if(query === '') {
+            this.props.loading(false);
+            return
+        } else {
+            BooksAPI.search(query)
+                .then((searchBooks) => {
                     searchBooks.map((book) => {
                         book.shelf = this.props.selectBookCase(book.id);
-                        return book
+                        return book;
                     })
+                    this.props.loading(false);
                     this.setState({ searchBooks });
-                }
-            })
+                }).catch((searchBooks) => {
+                    if(!searchBooks || searchBooks.error) {
+                        this.setState({searchBooks: []});
+                        return searchBooks;
+                    }
+            });
+        }
     }
 
     render(){
@@ -56,20 +64,23 @@ class BookSearch extends Component {
                 </div>
 
                 <div className="search-books-results">
-                    {query && (searchBooks.length !== 0
-                        ? (<span>Mostrando {searchBooks.length} livros de <em>"{query}"</em></span>)
-                        : (<span>Nenhum resultado encontrado para <em>"{query}"</em></span>)
+                    {query && (searchBooks.length !== 0 ? (
+                    <div>
+                        <span>Mostrando {searchBooks.length} livros de <em>"{query}"</em></span>
+                        <ol className="books-grid">
+                            {searchBooks.map((book) => (
+                                <Book
+                                    key={book.id} 
+                                    book={book}
+                                    changeTrigger={this.props.changeTrigger}
+                                    searchPage={true}
+                                />
+                            ))}
+                        </ol>
+                    </div>) : 
+                    (<span>Nenhum resultado encontrado para <em>"{query}"</em></span>)
                     )}
-                    <ol className="books-grid">
-                        {searchBooks.map((book) => (
-                            <Book
-                                key={book.id} 
-                                book={book}
-                                changeTrigger={this.props.changeTrigger}
-                                searchPage={true}
-                            />
-                        ))}
-                    </ol>
+                    
                 </div>
             </div>
         )
