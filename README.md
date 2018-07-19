@@ -1,8 +1,8 @@
 # Visão Geral do Projeto
 
-Projeto MyReads, aplicação de estante de livros que permite selecionar e classificar os livros que você já leu, está lendo ou quer ler, projeto desenvolvido com o uso do React e um servidor de API e biblioteca cliente.
+Demonstração: [https://rblima0.github.io/projeto-myreads](https://rblima0.github.io/projeto-myreads)
 
-[Demo do projeto](https://rblima0.github.io/projeto-myreads)
+Projeto MyReads, aplicação de estante de livros com uso do React que permite selecionar e classificar os livros que você já leu, está lendo ou quer ler, projeto desenvolvido com o uso do React e um servidor de API e biblioteca cliente.
 
 ## Como funciona ?
 
