@@ -71,7 +71,7 @@ class BooksApp extends Component {
 
 					{this.state.loading && (<Loading />)}
 
-					<Route exact path="/" render={() => (
+					<Route exact path='/' render={() => (
 						<BookList
 							books={this.state.books}
 							changeTrigger={this.updateBookCase}
