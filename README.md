@@ -4,6 +4,10 @@ Demonstração: [https://rblima0.github.io/projeto-myreads](https://rblima0.gith
 
 Projeto MyReads, aplicação de estante de livros com uso do React que permite selecionar e classificar os livros que você já leu, está lendo ou quer ler, projeto desenvolvido com o uso do React e um servidor de API e biblioteca cliente.
 
+<p align="center">
+<img src="https://github.com/rblima0/projeto-myreads/assets/14132289/511b6534-8c32-4ebb-af3e-d0360b14defb" alt="my-reads" width="300" height="300">
+</p>
+
 ## Como funciona ?
 
 Nesta aplicação, a página principal exibe uma lista de "estantes" (ou seja, categorias), cada uma das quais contém uma série de livros.
